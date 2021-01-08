@@ -5,6 +5,12 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  const [allSentences, setAllSentences] = useState([])
+
+  const addLineToPoem = (newSentence) => {
+    setAllSentences(allSentences.push(newSentence))
+  }
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -27,7 +33,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={FIELDS} addLineCallback={addLineToPoem}/>
 
       <FinalPoem />
 
