@@ -36,7 +36,7 @@ const Game = () => {
 
       <PlayerSubmissionForm sendSubmission={addLineToPoem}/>
 
-      <FinalPoem />
+      <FinalPoem submissions={allSubmissions}/>
 
     </div>
   );
