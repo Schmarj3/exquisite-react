@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
+// initial values for formFields
 const emptySentence = {
   articleOne: 'The',
   adj1: '',

@@ -5,7 +5,11 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  // state
   const [allSubmissions, setAllSubmissions] = useState([])
+  const [revealed, setRevealed] = useState(false)
+
+  // dynamically make example sentence
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -14,10 +18,15 @@ const Game = () => {
     }
   }).join(' ');
 
+  // helper functions
   const addLineToPoem = (line) => {
     const newSubmission = [...allSubmissions];
-    newSubmission.push(line)
-    setAllSubmissions(newSubmission)
+    newSubmission.push(line);
+    setAllSubmissions(newSubmission);
+  }
+
+  const revealFinalPoem = () => {
+    setRevealed(true)
   }
 
   return (
@@ -31,13 +40,15 @@ const Game = () => {
       <p className="Game__format-example">
         { exampleFormat }
       </p>
-
-      <RecentSubmission mostRecentSubmission={allSubmissions[allSubmissions.length - 1]}/>
-
-      <PlayerSubmissionForm sendSubmission={addLineToPoem}/>
-
-      <FinalPoem submissions={allSubmissions}/>
-
+      <section className={revealed ? 'hide' : ''}>
+        <RecentSubmission mostRecentSubmission={allSubmissions[allSubmissions.length - 1]}/>
+      </section>
+      <section className={revealed ? 'hide' : ''}>
+        <PlayerSubmissionForm sendSubmission={addLineToPoem}/>
+      </section>
+      <section>
+        <FinalPoem submissions={allSubmissions} onRevealPoemCallback={revealFinalPoem} revealState={revealed}/>
+      </section>
     </div>
   );
 }
