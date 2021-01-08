@@ -55,6 +55,7 @@ const PlayerSubmissionForm = (props) => {
               type="text"
               onChange={onInputChange}
               value={formFields.adj1}
+              className={formFields.adj1 === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}
           />
           <input
               id="noun1"
@@ -63,6 +64,7 @@ const PlayerSubmissionForm = (props) => {
               type="text" 
               onChange={onInputChange}
               value={formFields.noun1}
+              className={formFields.noun1 === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}
           />
           <input
               id="adv"
@@ -71,6 +73,7 @@ const PlayerSubmissionForm = (props) => {
               type="text" 
               onChange={onInputChange}
               value={formFields.adv}
+              className={formFields.adv === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}
           />
           <input
               id="verb"
@@ -79,6 +82,7 @@ const PlayerSubmissionForm = (props) => {
               type="text"
               onChange={onInputChange}
               value={formFields.verb}
+              className={formFields.verb === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}
           />
           <span>the </span>
           <input
@@ -88,6 +92,7 @@ const PlayerSubmissionForm = (props) => {
               type="text"
               onChange={onInputChange}
               value={formFields.adj2}
+              className={formFields.adj2 === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}
           />
           <input
               id="noun2"
@@ -96,6 +101,7 @@ const PlayerSubmissionForm = (props) => {
               type="text"
               onChange={onInputChange}
               value={formFields.noun2}
+              className={formFields.noun2 === '' ? 'PlayerSubmissionFormt__input--invalid' : ''}
           />
           <span>.</span>
         </div>
