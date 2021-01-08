@@ -32,7 +32,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission mostRecentSubmission={allSubmissions[allSubmissions.length - 1]}/>
 
       <PlayerSubmissionForm sendSubmission={addLineToPoem}/>
 
