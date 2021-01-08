@@ -13,6 +13,10 @@ const Game = () => {
     }
   }).join(' ');
 
+  const addLineToPoem = (line) => {
+    return console.log(line);
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -27,7 +31,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm addLineCallback={addLineToPoem}/>
 
       <FinalPoem />
 
