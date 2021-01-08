@@ -5,6 +5,7 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+  const [allSubmissions, setAllSubmissions] = useState([])
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -14,7 +15,9 @@ const Game = () => {
   }).join(' ');
 
   const addLineToPoem = (line) => {
-    return console.log(line);
+    const newSubmission = [...allSubmissions];
+    newSubmission.push(line)
+    setAllSubmissions(newSubmission)
   }
 
   return (

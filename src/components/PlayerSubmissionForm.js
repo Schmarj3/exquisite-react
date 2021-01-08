@@ -25,19 +25,17 @@ const PlayerSubmissionForm = (props) => {
     const newFormFields = {...formFields}
     newFormFields[event.target.id] = event.target.value;
     setFormFields(newFormFields);
-    console.log(newFormFields);
-    console.log(Object.values(newFormFields));
   }
   
   const onFormSubmit = (event) => {
     event.preventDefault();
-    const newSentence = Object.values(formFields).join(' ')
-  
-    console.log(newSentence)
+
+    const newSentence = Object.values(formFields).join(' ');
     
     props.sendSubmission(newSentence);
+
     setCurrentPlayer(currentPlayer + 1)
-    setFormFields(emptySentence)
+    setFormFields({...emptySentence})
   };
 
 
