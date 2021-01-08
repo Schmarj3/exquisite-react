@@ -31,7 +31,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm addLineCallback={addLineToPoem}/>
+      <PlayerSubmissionForm sendSubmission={addLineToPoem}/>
 
       <FinalPoem />
 

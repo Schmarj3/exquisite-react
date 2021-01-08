@@ -16,25 +16,34 @@ const emptySentence = {
 }
 
 const PlayerSubmissionForm = (props) => {
-  const [formFields, setFormFields] = useState(emptySentence)
-
-  const onFormChange = (event) => {
-    formFields[event.target.name] = event.target.value
-    console.log(formFields)
-    setFormFields(formFields)
+  // states
+  const [formFields, setFormFields] = useState({...emptySentence});
+  const [currentPlayer, setCurrentPlayer] = useState(1)
+  
+  // event handlers
+  const onInputChange = (event) => {
+    const newFormFields = {...formFields}
+    newFormFields[event.target.id] = event.target.value;
+    setFormFields(newFormFields);
+    console.log(newFormFields);
+    console.log(Object.values(newFormFields));
   }
-
+  
   const onFormSubmit = (event) => {
     event.preventDefault();
-    console.log(formFields)
-
-    props.addLineCallback(formFields)
+    const newSentence = Object.values(formFields).join(' ')
+  
+    console.log(newSentence)
+    
+    props.sendSubmission(newSentence);
+    setCurrentPlayer(currentPlayer + 1)
     setFormFields(emptySentence)
-  }
+  };
+
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{ currentPlayer }</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit} >
 
@@ -45,7 +54,7 @@ const PlayerSubmissionForm = (props) => {
               name="adj1" 
               placeholder="adjective"
               type="text"
-              onChange={onFormChange}
+              onChange={onInputChange}
               value={formFields.adj1}
           />
           <input
@@ -53,7 +62,7 @@ const PlayerSubmissionForm = (props) => {
               name="noun1"
               placeholder="noun"
               type="text" 
-              onChange={onFormChange}
+              onChange={onInputChange}
               value={formFields.noun1}
           />
           <input
@@ -61,7 +70,7 @@ const PlayerSubmissionForm = (props) => {
               name="adv"
               placeholder="adverb"
               type="text" 
-              onChange={onFormChange}
+              onChange={onInputChange}
               value={formFields.adv}
           />
           <input
@@ -69,7 +78,7 @@ const PlayerSubmissionForm = (props) => {
               name="verb"
               placeholder="verb"
               type="text"
-              onChange={onFormChange}
+              onChange={onInputChange}
               value={formFields.verb}
           />
           <span>the </span>
@@ -78,7 +87,7 @@ const PlayerSubmissionForm = (props) => {
               name="adj2"
               placeholder="adjective"
               type="text"
-              onChange={onFormChange}
+              onChange={onInputChange}
               value={formFields.adj2}
           />
           <input
@@ -86,7 +95,7 @@ const PlayerSubmissionForm = (props) => {
               name="noun2"
               placeholder="noun"
               type="text"
-              onChange={onFormChange}
+              onChange={onInputChange}
               value={formFields.noun2}
           />
           <span>.</span>
